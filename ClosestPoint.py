@@ -9,7 +9,7 @@ Ce script vise a recrÃ©er dans QGIS la Focntion SQL : CLosest Point
 It rely on the solutions provided in "Nearest neighbor between a point layer and a line layer"
   http://gis.stackexchange.com/questions/396/nearest-pojected-point-from-a-point-                               layer-on-a-line-or-polygon-outer-ring-layer
 V2 du  8 aout 2016
-jean-christophe.baudin@onema.fr
+jean-christophe.baudin@afbiodiversite.fr
 """
 from qgis.core import *
 from qgis.gui import *
@@ -126,11 +126,7 @@ for inFeatP in layerP.selectedFeatures():
             lineStart,lineEnd=geomL2[i-1],geomL2[i]
             ProjPoint=intersect_point_to_line(geomP.asPoint(),QgsPoint(lineStart),QgsPoint(lineEnd))
             Distance=magnitude(geomP.asPoint(),ProjPoint)
-            toto=''
-            toto=toto+ 'lineStart :'+ str(lineStart)+ '  lineEnd : '+ str(lineEnd)+ '\n'+ '\n'
-            toto=toto+ 'ProjPoint '+ str(ProjPoint)+ '\n'+ '\n'
-            toto=toto+ 'Distance '+ str(Distance)
-            #QMessageBox.information(None,"DEBUG", toto)
+
             if firstM:
                 minValT,nearest_pointT,firstM = Distance,ProjPoint,False
             else:
